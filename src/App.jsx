@@ -11,7 +11,7 @@ import AuthContextProvider from './Context/AuthContext'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import PostDetails from './pages/PostDetails/PostDetails'
 import { Toaster } from 'react-hot-toast'
-import Bookmarks from './pages/BookMarks/BookMarks'
+import Bookmarks from './pages/Bookmarks/Bookmarks'
 import Settings from './pages/Settings/Settings'
 import UserProfile from './pages/UserProfile/UserProfile';
 import ErrorPage from './pages/ErrorPage/ErrorPage'
