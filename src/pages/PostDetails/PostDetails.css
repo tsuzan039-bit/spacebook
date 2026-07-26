@@ -1,0 +1,183 @@
+.space-details-page{
+    min-height:100vh;
+    padding:40px 20px;
+    position:relative;
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at top,#261048 0%,#12081f 45%,#06030d 100%);
+}
+
+.space-details-container{
+    max-width:850px;
+    margin:auto;
+}
+
+.space-details-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+
+    margin-bottom:35px;
+}
+
+.space-details-title span{
+    font-size:40px;
+}
+
+.space-details-title h1{
+    color:white;
+    font-size:2rem;
+    font-weight:700;
+}
+
+.space-details-card{
+
+    position:relative;
+
+    padding:18px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(145deg,#0d1329,#131b36);
+
+    border:1px solid rgba(0,255,255,.18);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+    0 0 45px rgba(0,255,255,.12);
+}
+
+.space-details-card::before{
+
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:30px;
+
+    padding:1px;
+
+    background:linear-gradient(
+    130deg,
+    #00e5ff55,
+    transparent,
+    #a855f755
+    );
+
+    mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+    -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+            mask-composite:exclude;
+
+}
+
+.space-empty-post{
+
+    text-align:center;
+
+    padding:80px 30px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(145deg,#11172c,#0b1022);
+
+    border:1px solid rgba(0,255,255,.15);
+
+    color:white;
+
+}
+
+.space-empty-icon{
+
+    font-size:80px;
+
+    animation:floatRocket 3s infinite ease-in-out;
+
+}
+
+.space-empty-post h2{
+
+    margin-top:20px;
+
+    font-size:2rem;
+
+}
+
+.space-empty-post p{
+
+    margin-top:15px;
+
+    color:#b7c4e3;
+
+}
+
+.space-star{
+
+    position:absolute;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:0 0 15px white;
+
+    animation:twinkle 2s infinite alternate;
+
+}
+
+@keyframes twinkle{
+
+    from{
+
+        opacity:.3;
+        transform:scale(.8);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:scale(1.6);
+
+    }
+
+}
+
+@keyframes floatRocket{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-15px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}

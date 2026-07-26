@@ -1,0 +1,479 @@
+/* ===========================
+        SPACE NAVBAR
+=========================== */
+
+.space-navbar{
+    position: sticky;
+    top:0;
+    z-index:999;
+
+
+    backdrop-filter:blur(22px);
+
+    background:
+    linear-gradient(135deg,
+    rgba(9,5,25,.92),
+    rgba(24,10,44,.92),
+    rgba(15,5,35,.92));
+
+    border-bottom:1px solid rgba(139,92,246,.25);
+
+    box-shadow:
+    0 10px 45px rgba(90,20,255,.25);
+
+    padding:10px 25px;
+}
+
+/* Aurora */
+
+.space-navbar::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+radial-gradient(circle at 20% 30%,
+rgba(34,211,238,.12),
+transparent 30%),
+
+radial-gradient(circle at 80% 0%,
+rgba(168,85,247,.18),
+transparent 35%),
+
+radial-gradient(circle at 50% 120%,
+rgba(99,102,241,.15),
+transparent 45%);
+
+animation:auroraMove 10s linear infinite;
+
+pointer-events:none;
+
+}
+
+@keyframes auroraMove{
+
+0%{
+transform:translateX(0);
+}
+
+50%{
+transform:translateX(-80px);
+}
+
+100%{
+transform:translateX(0);
+}
+
+}
+
+/* ===========================
+          STARS
+=========================== */
+
+.nav-star{
+
+position:absolute;
+
+width:4px;
+height:4px;
+
+background:white;
+
+border-radius:50%;
+
+box-shadow:
+0 0 10px white;
+
+animation:twinkle 2.5s infinite;
+
+}
+
+@keyframes twinkle{
+
+0%,100%{
+opacity:.25;
+transform:scale(.8);
+}
+
+50%{
+opacity:1;
+transform:scale(1.7);
+}
+
+}
+
+/* ===========================
+        LOGO
+=========================== */
+
+.space-logo{
+
+display:flex;
+
+align-items:center;
+
+gap:16px;
+
+z-index:5;
+
+}
+
+.planet-container{
+
+position:relative;
+
+width:48px;
+height:48px;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+animation:planetFloat 5s ease-in-out infinite;
+
+}
+
+@keyframes planetFloat{
+
+0%,100%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-5px);
+}
+
+}
+
+.planet-core{
+
+width:24px;
+height:24px;
+
+border-radius:50%;
+
+background:
+linear-gradient(135deg,
+#8b5cf6,
+#22d3ee);
+
+z-index:3;
+
+box-shadow:
+0 0 30px #8b5cf6;
+
+}
+
+.planet-ring{
+
+position:absolute;
+
+width:46px;
+height:15px;
+
+border-radius:50%;
+
+border:2px solid rgba(255,255,255,.7);
+
+transform:rotate(-25deg);
+
+z-index:4;
+
+}
+
+.planet-glow{
+
+position:absolute;
+
+width:60px;
+height:60px;
+
+border-radius:50%;
+
+background:#8b5cf6;
+
+filter:blur(18px);
+
+opacity:.35;
+
+}
+
+.space-brand-title{
+
+font-size:28px;
+
+font-weight:800;
+
+background:
+linear-gradient(80deg,#9c1af3,#9ee1f7,#5fdaeb,#f2278c);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.space-brand-subtitle{
+
+font-size:11px;
+
+letter-spacing:2px;
+
+color:#b7b2d8;
+
+margin-top:-4px;
+
+}
+
+/* ===========================
+        LINKS
+=========================== */
+
+.space-link{
+
+position:relative;
+
+color:#ddd !important;
+
+font-weight:600;
+
+transition:.35s;
+
+padding:10px 15px !important;
+
+border-radius:14px;
+
+}
+
+.space-link:hover{
+
+color:white !important;
+
+background:rgba(139,92,246,.12);
+
+transform:translateY(-2px);
+
+}
+
+.space-link::after{
+
+content:"";
+
+position:absolute;
+
+bottom:3px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:0;
+
+height:3px;
+
+border-radius:20px;
+
+background:
+linear-gradient(90deg,
+#8b5cf6,
+#22d3ee);
+
+transition:.35s;
+
+}
+
+.space-link:hover::after{
+
+width:80%;
+
+}
+
+/* ===========================
+        AVATAR
+=========================== */
+
+.avatar-wrapper{
+
+position:relative;
+
+}
+
+.space-avatar img{
+
+border:2px solid #8b5cf6;
+
+box-shadow:
+0 0 25px rgba(139,92,246,.55);
+
+transition:.35s;
+
+}
+
+.space-avatar img:hover{
+
+transform:scale(1.08);
+
+box-shadow:
+0 0 35px #22d3ee;
+
+}
+
+.online-dot{
+
+position:absolute;
+
+right:2px;
+
+bottom:3px;
+
+width:10px;
+height:10px;
+
+background:#00ff80;
+
+border-radius:50%;
+
+border:2px solid #14061d;
+
+box-shadow:
+0 0 10px #00ff80;
+
+}
+
+/* ===========================
+      DROPDOWN
+=========================== */
+
+.space-dropdown{
+
+background:#12081f !important;
+
+border:1px solid rgba(139,92,246,.25);
+
+border-radius:18px;
+
+overflow:hidden;
+
+}
+
+.dropdown-user{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:6px 4px;
+
+}
+
+.dropdown-photo{
+
+width:42px;
+
+height:42px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:2px solid #8b5cf6;
+
+}
+
+.dropdown-name{
+
+color:white;
+
+font-weight:700;
+
+}
+
+.dropdown-email{
+
+font-size:12px;
+
+color:#c4b5fd;
+
+}
+
+.logout-btn{
+
+color:#ff9090 !important;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.logout-btn:hover{
+
+background:#2d123f !important;
+
+color:white !important;
+
+}
+
+/* ===========================
+        TOGGLE
+=========================== */
+
+.space-toggle{
+
+border-radius:14px;
+
+background:#211235;
+
+border:1px solid rgba(139,92,246,.3);
+
+}
+
+.space-toggle:hover{
+
+background:#32185a;
+
+}
+
+
+.space-user-dropdown{
+    background:
+        radial-gradient(circle at top,#312e81 0%,#140b2d 45%,#070312 100%);
+    border:1px solid rgba(34,211,238,.25);
+    backdrop-filter:blur(20px);
+    border-radius:24px;
+    box-shadow:
+        0 0 35px rgba(34,211,238,.18),
+        inset 0 0 25px rgba(255,255,255,.03);
+}
+
+.space-user-dropdown::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(white 1px,transparent 1px);
+    background-size:40px 40px;
+    opacity:.08;
+    pointer-events:none;
+}
+/* ✅ إجبار اللينكات تظهر دايمًا على الشاشات الكبيرة (768px فأكتر) */
+@media (min-width: 768px) {
+  .space-navbar [class*="NavbarCollapse"],
+  .space-navbar > div:has(.space-link) {
+    display: flex !important;
+    width: auto !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .force-nav-links {
+    display: flex !important;
+    width: auto !important;
+  }
+}

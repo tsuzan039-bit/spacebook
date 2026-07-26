@@ -1,0 +1,181 @@
+.create-post-card{
+
+position:relative;
+
+overflow:hidden;
+
+background:linear-gradient(180deg,#0f172a,#111827);
+
+border:1px solid rgba(139,92,246,.25);
+
+border-radius:24px;
+
+padding:22px;
+
+box-shadow:
+0 0 25px rgba(139,92,246,.18);
+
+}
+
+.space-glow{
+
+position:absolute;
+
+width:260px;
+
+height:260px;
+
+background:#7c3aed;
+
+filter:blur(130px);
+
+opacity:.15;
+
+top:-120px;
+
+right:-120px;
+
+pointer-events:none;
+
+}
+
+textarea.create-post-textarea {
+  background: #162033 !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+  border-radius: 18px !important;
+  color: #dcd3ff !important;
+  padding: 18px !important;
+  font-size: 15px;
+  resize: none;
+  min-height: 130px;
+  transition: .3s;
+}
+
+textarea.create-post-textarea::placeholder {
+  color: #6b7280;
+}
+
+textarea.create-post-textarea:focus {
+  background: #1c2942 !important;
+  border-color: #8b5cf6 !important;
+  color: #dcd3ff !important;
+  box-shadow:
+    0 0 0 2px rgba(139, 92, 246, .15),
+    0 0 20px rgba(139, 92, 246, .2) !important;
+}
+
+.create-post-footer{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-top:18px;
+
+padding-top:18px;
+
+border-top:1px solid rgba(255,255,255,.07);
+
+}
+
+.photo-btn{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:12px 18px;
+
+background:#19253c;
+
+border:1px solid rgba(34,211,238,.15);
+
+border-radius:14px;
+
+color:#67e8f9;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.photo-btn:hover{
+
+background:#22314d;
+
+transform:translateY(-2px);
+
+}
+
+.publish-post-btn{
+
+background:linear-gradient(90deg,#06b6d4,#8b5cf6)!important;
+
+border:none!important;
+
+border-radius:14px!important;
+
+padding:0 28px!important;
+
+font-weight:700;
+
+box-shadow:0 0 18px rgba(139,92,246,.35);
+
+}
+
+.publish-post-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 0 35px rgba(139,92,246,.45);
+
+}
+
+.editing-post{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:18px;
+
+padding:12px 16px;
+
+border-radius:14px;
+
+background:#22163d;
+
+border:1px solid rgba(139,92,246,.25);
+
+color:#ddd6fe;
+
+}
+
+.editing-post button{
+
+background:none;
+
+border:none;
+
+color:#22d3ee;
+
+cursor:pointer;
+
+font-weight:600;
+
+}
+
+.hidden{
+
+display:none;
+
+}
+
+

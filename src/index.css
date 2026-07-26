@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+@utility container{
+
+    margin: auto;
+    
+
+ @media (width >= 80rem /* 1280px */) {
+ max-width: 70rem /* 1280px */;
+ }
+ @media (width >= 96rem /* 1536px */) {
+ max-width: 80rem /* 1536px */;
+ }
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,416 @@
+.space-comments-drawer{
+
+height:75vh !important;
+
+background:
+linear-gradient(180deg,#090414,#120722,#1b0930);
+
+overflow:hidden;
+
+border-top-left-radius:35px;
+border-top-right-radius:35px;
+
+border-top:1px solid rgba(170,120,255,.25);
+
+box-shadow:
+0 -15px 60px rgba(130,0,255,.4);
+
+}
+
+.comments-flex-layout{
+
+position:relative;
+display:flex;
+flex-direction:column;
+height:100%;
+overflow:hidden;
+
+}
+
+
+.space-comments-header{
+
+color:white;
+
+font-size:22px;
+
+font-weight:700;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+flex-shrink:0;
+
+}
+
+
+/* ✅ التابات */
+.comments-tabs{
+
+display:flex;
+gap:8px;
+padding:12px 16px 0;
+flex-shrink:0;
+
+}
+
+.comments-tab-btn{
+
+flex:1;
+padding:10px 12px;
+border-radius:14px 14px 0 0;
+border:1px solid rgba(139,92,246,.3);
+border-bottom:none;
+background:rgba(139,92,246,.08);
+color:#c4b5fd;
+font-weight:600;
+font-size:13px;
+cursor:pointer;
+transition:.25s;
+
+}
+
+.comments-tab-btn.active{
+
+background:rgba(139,92,246,.25);
+color:white;
+box-shadow:0 -4px 20px rgba(139,92,246,.3);
+
+}
+
+.comments-tab-btn:hover{
+
+background:rgba(139,92,246,.18);
+
+}
+
+
+/* ✅ محتوى التاب: بياخد المساحة المتبقية كلها، مفيش تراكب خالص */
+.comments-tab-content{
+
+flex:1 1 auto;
+min-height:0;
+overflow:hidden;
+border-top:1px solid rgba(139,92,246,.25);
+
+}
+
+
+.comments-scroll{
+
+height:100%;
+overflow-y:auto;
+padding:16px;
+
+}
+
+
+
+.comments-scroll::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+
+
+.comments-scroll::-webkit-scrollbar-thumb{
+
+background:#7b3cff;
+
+border-radius:20px;
+
+}
+
+
+
+.comments-scroll::-webkit-scrollbar-track{
+
+background:transparent;
+
+}
+
+
+
+
+
+
+
+
+
+
+/* ✅ تاب الإضافة: مساحته كاملة لوحده */
+.add-comment-tab{
+width: 100%;
+height:100%;
+padding:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+
+}
+
+
+.star{
+
+position:absolute;
+
+background:white;
+
+border-radius:50%;
+
+animation:twinkle 2s infinite;
+
+}
+
+
+
+.star1{
+
+width:5px;
+
+height:5px;
+
+top:60px;
+
+left:50px;
+
+}
+
+
+
+.star2{
+
+width:3px;
+
+height:3px;
+
+right:80px;
+
+top:120px;
+
+animation-delay:.7s;
+
+}
+
+
+
+.star3{
+
+width:6px;
+
+height:6px;
+
+right:30px;
+
+top:70px;
+
+animation-delay:1.4s;
+
+}
+
+
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.3;
+
+transform:scale(.7);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(1.5);
+
+}
+
+}
+
+
+
+.planet{
+
+position:absolute;
+
+right:-70px;
+
+top:-70px;
+
+width:180px;
+
+height:180px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle,
+
+#8a5cff,
+
+#32115f);
+
+filter:blur(2px);
+
+opacity:.3;
+
+}
+
+
+
+.empty-comments{
+
+height:100%;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:40px;
+
+color:white;
+
+}
+
+
+
+.astronaut{
+
+font-size:70px;
+
+animation:float 4s infinite ease-in-out;
+
+}
+
+
+
+@keyframes float{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-18px);
+
+}
+
+}
+
+
+
+.empty-comments h2{
+
+font-size:28px;
+
+margin-top:20px;
+
+font-weight:700;
+
+color:#fff;
+
+}
+
+
+
+.empty-comments p{
+
+margin-top:10px;
+
+color:#c7b8ff;
+
+font-size:15px;
+
+max-width:300px;
+
+line-height:1.7;
+
+}
+
+
+.empty-add-btn{
+
+margin-top:20px;
+padding:10px 24px;
+border-radius:14px;
+border:none;
+background:linear-gradient(135deg,#8b5cf6,#22d3ee);
+color:white;
+font-weight:700;
+cursor:pointer;
+transition:.25s;
+
+}
+
+.empty-add-btn:hover{
+
+box-shadow:0 0 20px rgba(139,92,246,.5);
+
+}
+
+
+
+.space-comment-card{
+    position:relative;
+}
+
+.space-comment-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at top right,
+    rgba(168,85,247,.18),
+    transparent 40%),
+    radial-gradient(circle at bottom left,
+    rgba(34,211,238,.18),
+    transparent 40%);
+    pointer-events:none;
+}
+
+.space-comment-card textarea{
+    color:white !important;
+    background:#1a0d30 !important;
+    border:1px solid rgba(168,85,247,.3) !important;
+    border-radius:18px !important;
+}
+
+.space-comment-card textarea::placeholder{
+    color:#c4b5fd !important;
+}
+
+.space-comment-card textarea:focus{
+    border-color:#8b5cf6 !important;
+    box-shadow:0 0 20px rgba(139,92,246,.45) !important;
+}
+
+.add-comment-tab{
+    width:100%;
+    height:100%;
+    display:flex;
+}
+
+.add-comment-tab form{
+    width:100%;
+    flex:1;
+}
+
+.add-comment-tab [data-testid="flowbite-card"]{
+    width:100%;
+    height:100%;
+}
