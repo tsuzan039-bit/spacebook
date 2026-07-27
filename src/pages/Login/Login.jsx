@@ -95,7 +95,7 @@ setLoading(false)
 
 <form
   onSubmit={handleSubmit(loginData)}
-  className="min-h-screen flex justify-center items-center relative px-4"
+  className=" mt-2 min-h-screen flex justify-center items-center relative px-4"
 >
   {/* Stars */}
   <div className="space-stars"></div>
