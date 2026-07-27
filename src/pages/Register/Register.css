@@ -117,3 +117,23 @@ box-shadow:
     0 0 18px #37edd1,
     0 0 40px #8b5cf6;
 }
+.respace{
+    font-size:70px;
+    font-weight:800;
+
+  background: linear-gradient(
+90deg,
+#8b5cf6 0%,
+#8b5cf6 20%,
+
+#22d3ee 40%,
+
+#67e8f9 40%,
+#67e8f9 60%,
+
+#ec4899 80%
+);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}

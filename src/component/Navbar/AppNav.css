@@ -463,17 +463,120 @@ background:#32185a;
     pointer-events:none;
 }
 /* ✅ إجبار اللينكات تظهر دايمًا على الشاشات الكبيرة (768px فأكتر) */
-@media (min-width: 768px) {
-  .space-navbar [class*="NavbarCollapse"],
-  .space-navbar > div:has(.space-link) {
-    display: flex !important;
-    width: auto !important;
+
+
+/* ===========================
+   TOP ROW FIX (Logo + Avatar/Toggle same line always)
+=========================== */
+.navbar-top-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  flex-wrap:nowrap;
+  gap:12px;
+  position:relative;
+  z-index:5;
+}
+
+/* على الشاشات الصغيرة قوي، نصغّر اللوجو شوية عشان يفضل في صف واحد */
+@media (max-width:480px){
+  .planet-container{
+    width:36px;
+    height:36px;
+  }
+  .planet-core{
+    width:18px;
+    height:18px;
+  }
+  .planet-ring{
+    width:34px;
+    height:11px;
+  }
+  .space-brand-title{
+    font-size:20px;
+  }
+  .space-brand-subtitle{
+    font-size:9px;
+    letter-spacing:1px;
   }
 }
 
-@media (min-width: 768px) {
-  .force-nav-links {
-    display: flex !important;
-    width: auto !important;
+/* التأكد إن الـ Navbar الأساسي (nav tag) بقى flex-col بدل ما يبقى كله flex-wrap واحد */
+.space-navbar > div:first-of-type{
+  flex-wrap: wrap;
+}
+
+/* ===========================
+   RESPONSIVE FIX - DROPDOWN CONTENT
+=========================== */
+@media (max-width:480px){
+
+  .navbar-top-row{
+    gap:6px;
+  }
+
+  .dropdown-user{
+    gap:8px;
+  }
+
+  .dropdown-photo{
+    width:34px;
+    height:34px;
+  }
+
+  .dropdown-name{
+    font-size:13px;
+  }
+
+  .dropdown-email{
+    font-size:10px;
+  }
+}
+
+/* ===========================
+      AUTH LINKS (LOGIN/REGISTER)
+=========================== */
+
+.auth-links{
+  z-index:5;
+}
+
+.auth-btn{
+  padding:9px 18px;
+  border-radius:14px;
+  font-weight:600;
+  font-size:14px;
+  transition:.3s;
+  white-space:nowrap;
+}
+
+.auth-btn-ghost{
+  color:#ddd;
+  border:1px solid rgba(139,92,246,.35);
+  background:rgba(139,92,246,.08);
+}
+
+.auth-btn-ghost:hover{
+  color:white;
+  background:rgba(139,92,246,.18);
+  transform:translateY(-2px);
+}
+
+.auth-btn-filled{
+  color:white;
+  background:linear-gradient(90deg,#8b5cf6,#22d3ee);
+  box-shadow:0 0 20px rgba(139,92,246,.4);
+}
+
+.auth-btn-filled:hover{
+  box-shadow:0 0 28px rgba(34,211,238,.55);
+  transform:translateY(-2px);
+}
+
+@media (max-width:480px){
+  .auth-btn{
+    padding:7px 12px;
+    font-size:12px;
   }
 }

@@ -127,6 +127,8 @@ className="min-h-screen flex justify-center items-center relative overflow-hidde
 👩‍🚀
 
 </div>
+            <span className="  respace  flex justify-center ">Spacebook</span>
+
 <h1 className="space-title">
 
 JOIN THE GALAXY

@@ -172,7 +172,6 @@ export default function Bookmarks() {
 
                   <div className="absolute -inset-1 rounded-[30px] bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-400 blur-xl opacity-30"></div>
 
-                  <div className="relative rounded-[28px] bg-[#0f0820]/80 border border-violet-500/20 backdrop-blur-xl p-3">
 
                     <Postcard
                       post={post}
@@ -181,7 +180,6 @@ export default function Bookmarks() {
                       setPostToBeUpdate={setPostToBeUpdate}
                     />
 
-                  </div>
 
                 </motion.div>
 

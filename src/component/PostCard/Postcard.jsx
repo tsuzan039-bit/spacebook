@@ -357,38 +357,59 @@ function handleClickComment(){
 
 <div className="card-glow"></div>
 
-{post.sharedPost &&
-<div className='flex items-center justify-between mb-2 relative z-10'>
-  <div className='flex items-center gap-2 text-violet-200 text-sm'>
-    {sharerImg && <img src={sharerImg} className='size-[25px] rounded-full object-cover'/>}
-    <span>{sharerName} shared this post</span>
-  </div>
+{post.sharedPost && (
+  <div className="mb-4 relative z-10">
 
-  {sharerId === userData?._id && !isEditingPost &&
-    <div className='flex gap-3'>
-      <motion.button
-        whileHover={{scale:1.06,y:-2}}
-        whileTap={{scale:.95}}
-        onClick={startEditing}
-        className="space-edit-btn"
-      >
-        <span className="btn-glow"></span>
-         Edit
-      </motion.button>
+    {/* Shared text */}
+    <div className="mb-3">
+      <div className="flex items-center gap-2 text-violet-200 text-sm">
+        {sharerImg && (
+          <img
+            src={sharerImg}
+            className="size-7 rounded-full object-cover border border-cyan-400/40"
+            alt=""
+          />
+        )}
 
-      <motion.button
-        whileHover={{scale:1.06}}
-        whileTap={{scale:.95}}
-        onClick={()=>deleteShareMutate()}
-        className="space-remove-btn"
-      >
-        <span className="btn-glow"></span>
-        {isDeletingShare ? "Removing..." : " Remove Share"}
-      </motion.button>
+        <span className="shared-post-text">
+          🚀 {sharerName} shared this post
+        </span>
+      </div>
     </div>
-  }
-</div>
-}
+
+    {/* Owner buttons */}
+    {sharerId === userData?._id && !isEditingPost && (
+      <div className="flex flex-wrap gap-2">
+
+        <motion.button
+          whileHover={{ scale: 1.03, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={startEditing}
+          className="space-edit-btn flex items-center justify-center gap-1.5"
+        >
+          <span className="btn-glow"></span>
+          
+          <span>Edit</span>
+        </motion.button>
+
+        <motion.button
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => deleteShareMutate()}
+          className="space-remove-btn flex items-center justify-center gap-1.5"
+        >
+          <span className="btn-glow"></span>
+          
+          <span>
+            {isDeletingShare ? "Removing..." : "Remove"}
+          </span>
+        </motion.button>
+
+      </div>
+    )}
+
+  </div>
+)}
 
 {post.sharedPost && !isEditingPost && post.body &&
 <p className='text-violet-100 text-lg mb-2 relative z-10'>{post.body}</p>

@@ -296,23 +296,7 @@ background:rgba(124,58,237,.22);
 /* REPLY BOX */
 /* ============================= */
 
-.space-reply-box{
 
-padding:18px;
-
-border-radius:24px;
-
-background:
-
-rgba(17,24,39,.65);
-
-border:
-
-1px solid rgba(139,92,246,.35);
-
-backdrop-filter:blur(18px);
-
-}
 
 
 /* ============================= */
@@ -400,6 +384,305 @@ font-size:15px;
 
 transform:translateY(-6px);
 
+}
+
+}
+
+.comment-actions{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:22px;
+}
+
+.reply-form{
+margin-top:22px;
+}
+
+.space-reply-box{
+    width:100%;
+    padding:16px;
+    border-radius:18px;
+
+    background:rgba(17, 10, 39, .85);
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(139,92,246,.25);
+
+    box-shadow:
+        0 0 25px rgba(139,92,246,.15),
+        inset 0 0 20px rgba(255,255,255,.03);
+
+    margin-top:16px;
+}
+
+.space-reply-box textarea{
+    background:rgba(255,255,255,.05)!important;
+    color:#fff!important;
+
+    border:1px solid rgba(139,92,246,.3)!important;
+
+    border-radius:14px!important;
+
+    padding:14px!important;
+
+    min-height:90px!important;
+
+    resize:none;
+}
+
+.space-reply-box textarea::placeholder{
+    color:#a78bfa;
+}
+.reply-title{
+
+color:#d8b4fe;
+
+font-size:14px;
+
+font-weight:700;
+
+margin-bottom:14px;
+
+}
+
+.reply-textarea textarea{
+
+background:rgba(255,255,255,.05)!important;
+
+color:white!important;
+
+border:1px solid rgba(139,92,246,.25)!important;
+
+border-radius:16px!important;
+
+}
+
+.reply-textarea textarea::placeholder{
+
+color:#b7b6d8!important;
+
+}
+
+.reply-buttons{
+
+display:flex;
+
+gap:12px;
+
+margin-top:15px;
+
+}
+
+.reply-send-btn{
+
+flex:1;
+
+background:linear-gradient(90deg,#7c3aed,#06b6d4)!important;
+
+border:none!important;
+
+border-radius:15px!important;
+
+}
+
+.reply-cancel-btn{
+
+background:#281642!important;
+
+border:none!important;
+
+border-radius:15px!important;
+
+}
+
+.reply-timeline{
+
+margin-top:24px;
+
+padding-left:28px;
+
+margin-left:12px;
+
+border-left:2px dashed rgba(139,92,246,.35);
+
+display:flex;
+
+flex-direction:column;
+
+gap:16px;
+
+}
+
+
+@media(max-width:640px){
+
+.comment-actions{
+
+flex-direction:column;
+
+}
+
+.comment-actions button{
+
+width:100%;
+
+}
+
+.reply-buttons{
+
+flex-direction:column;
+
+}
+
+.reply-buttons button{
+
+width:100%;
+
+}
+
+.reply-timeline{
+
+padding-left:15px;
+
+margin-left:0;
+
+}
+
+}
+
+
+
+.comment-actions{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    margin-top:18px;
+}
+
+.comment-actions button{
+    width:100%;
+    min-height:34px;
+    font-size:12px;
+    border-radius:12px;
+    padding:6px 10px;
+}
+.comment-actions{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:18px;
+}
+
+.action-chip{
+display:flex;
+align-items:center;
+gap:6px;
+
+padding:6px 12px;
+
+font-size:12px;
+
+border-radius:999px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(139,92,246,.25);
+
+color:#ddd;
+
+transition:.3s;
+
+cursor:pointer;
+}
+
+.action-chip:hover{
+background:rgba(139,92,246,.18);
+transform:translateY(-2px);
+}
+
+.edit-chip{
+border-color:#facc15;
+color:#fde68a;
+}
+
+.delete-chip{
+border-color:#ef4444;
+color:#fca5a5;
+}
+
+.reply-card{
+margin-top:16px;
+padding:18px;
+border-radius:22px;
+background:rgba(15,12,40,.95);
+border:1px solid rgba(139,92,246,.25);
+}
+
+.reply-header{
+font-weight:700;
+margin-bottom:12px;
+color:white;
+}
+
+.reply-header span{
+color:#67e8f9;
+}
+
+.reply-footer{
+display:flex;
+justify-content:flex-end;
+gap:10px;
+margin-top:15px;
+flex-wrap:wrap;
+}
+
+.reply-send,
+.reply-cancel{
+padding:8px 18px;
+border-radius:999px;
+font-size:13px;
+cursor:pointer;
+transition:.3s;
+}
+
+.reply-send{
+background:linear-gradient(90deg,#7c3aed,#06b6d4);
+color:white;
+}
+
+.reply-cancel{
+background:#2d2d45;
+color:white;
+}
+
+.reply-timeline{
+margin-top:20px;
+padding-left:18px;
+border-left:2px solid rgba(139,92,246,.35);
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+@media(max-width:640px){
+
+.comment-actions{
+gap:6px;
+}
+
+.action-chip{
+font-size:11px;
+padding:6px 10px;
+}
+
+.reply-footer{
+justify-content:stretch;
+}
+
+.reply-send,
+.reply-cancel{
+flex:1;
 }
 
 }

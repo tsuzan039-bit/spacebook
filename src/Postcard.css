@@ -319,15 +319,10 @@ align-items:center;
 
 gap:8px;
 
-padding:8px 12px;
 
-border-radius:16px;
 
-background:rgba(255,255,255,.04);
 
-backdrop-filter:blur(12px);
 
-transition:.35s;
 
 cursor:pointer;
 
@@ -335,13 +330,12 @@ cursor:pointer;
 
 .space-action:hover{
 
-background:rgba(124,58,237,.15);
 
 box-shadow:
 
 0 0 20px rgba(139,92,246,.5),
 
-0 0 45px rgba(34,211,238,.25);
+;gap:6px
 
 }
 
@@ -718,4 +712,30 @@ transform:translateY(-8px);
 .space-modal-btn:focus{
 
     outline:none;
+}
+
+
+.shared-post-text{
+    color:#bde8ff;
+    font-size:.9rem;
+    font-weight:600;
+    letter-spacing:.3px;
+}
+
+.space-edit-btn,
+.space-remove-btn{
+    min-height:34px;
+    padding:7px 14px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:600;
+}
+
+@media (max-width:640px){
+
+    .space-edit-btn,
+    .space-remove-btn{
+        flex:1;
+    }
+
 }

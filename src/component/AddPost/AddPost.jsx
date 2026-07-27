@@ -118,34 +118,31 @@ export default function AddPost({postToBeUpdate,setPostToBeUpdate}) {
 
 
 
-  <div className="create-post-footer">
+<div className="create-post-footer">
 
-    <label htmlFor="postImg" className="photo-btn">
+  <label htmlFor="postImg" className="photo-btn">
+    <FaImage />
+    <span>Upload Image</span>
+  </label>
 
-      <FaImage />
+  <input
+    {...register("image")}
+    id="postImg"
+    type="file"
+    accept="image/*"
+    className="hidden"
+  />
 
-      <span>Upload Image</span>
+  <Button
+    type="submit"
+    className="publish-post-btn"
+  >
+    {postToBeUpdate
+      ? (isUpdating ? "Updating..." : "Update")
+      : (isAdding ? "Launching..." : "🚀 Launch Post")}
+  </Button>
 
-    </label>
-
-    <input
-      {...register("image")}
-      id="postImg"
-      type="file"
-      accept="image/*"
-      className="hidden"
-    />
-
-    <Button
-      type="submit"
-      className="publish-post-btn"
-    >
-      {postToBeUpdate
-        ? (isUpdating ? "Updating..." : "Update")
-        : (isAdding ? "Launch Post 🚀" : "Launch Post 🚀")}
-    </Button>
-
-  </div>
+</div>
 
 </form>
 </>  )

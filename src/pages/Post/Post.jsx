@@ -48,9 +48,9 @@ const {data,isLoading,isFetched,isError,isFetching}=usePost(['allPosts'],true,'p
 </div>
           {/* Loading */}
           {isLoading && (
-            <div className="space-y-3">
+            <div className="space-y-3 ">
               {[1,2,3].map((i) => (
-                <div className="bg-blue-200 rounded-xl shadow-sm p-3" key={i}>
+                <div className=" rounded-xl shadow-sm p-3" key={i}>
                   <PostCardSkeleton/>
                 </div>
               ))}

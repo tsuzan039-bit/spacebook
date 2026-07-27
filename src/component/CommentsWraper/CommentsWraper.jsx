@@ -16,6 +16,10 @@ const {data,isFetched,isLoading}=useQuery({
     enabled:Boolean(activePostId)
 })
 
+function handleUpdateComment(comment){
+  setUpdateComment(comment)
+  setActiveTab('add')
+}
 const [commentToBeUpdate, setUpdateComment] = useState()
 const [activeReplyCommentId, setActiveReplyCommentId] = useState(null)
 
@@ -91,7 +95,7 @@ const commentsCount = data?.data?.comments?.length ?? 0
                 data.data.comments.map((comment)=>(
                   <Comment
                     key={comment._id ?? comment.id}
-                    setUpdateComment={setUpdateComment}
+  setUpdateComment={handleUpdateComment}   
                     comment={comment}
                     activePostId={activePostId}
                     activeReplyCommentId={activeReplyCommentId}
