@@ -462,3 +462,28 @@ transform:rotate(360deg);
 }
 
 }
+
+.space-stars,
+.space-glow,
+.planet,
+.orbit-ring,
+.login-space-card::before,
+.login-space-card::after{
+    pointer-events: none;
+}
+
+.login-space-card{
+    position: relative;
+    z-index: 10;
+}
+
+.login-space-card > *{
+    position: relative;
+    z-index: 20;
+}
+
+.space-login-btn{
+    position: relative !important;
+    z-index: 100 !important;
+    cursor: pointer;
+}

@@ -93,8 +93,10 @@ setLoading(false)
 
 
 
-<form onSubmit={handleSubmit(loginData)} className="min-h-screen flex justify-center items-center relative overflow-hidden px-4">
-
+<form
+  onSubmit={handleSubmit(loginData)}
+  className="min-h-screen flex justify-center items-center relative px-4"
+>
   {/* Stars */}
   <div className="space-stars"></div>
 
@@ -106,8 +108,7 @@ setLoading(false)
 
   {/* Glow */}
   <div className="space-glow"></div>
-<div className="login-space-card w-full md:w-[650px] p-10 relative overflow-hidden">
- <div className="astronaut-box">
+<div className="login-space-card w-full md:w-[650px] p-10 relative"> <div className="astronaut-box">
 
 🚀
 

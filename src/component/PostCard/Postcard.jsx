@@ -363,13 +363,18 @@ function handleClickComment(){
     {/* Shared text */}
     <div className="mb-3">
       <div className="flex items-center gap-2 text-violet-200 text-sm">
-        {sharerImg && (
-          <img
-            src={sharerImg}
-            className="size-7 rounded-full object-cover border border-cyan-400/40"
-            alt=""
-          />
-        )}
+       {sharerImg && (
+  <Link
+    to={`/user/${sharerId}`}
+    state={{ userHint: { name: sharerName, photo: sharerImg } }}
+  >
+    <img
+      src={sharerImg}
+      className="size-7 rounded-full object-cover border border-cyan-400/40 cursor-pointer"
+      alt=""
+    />
+  </Link>
+)}
 
         <span className="shared-post-text">
           🚀 {sharerName} shared this post
@@ -431,11 +436,18 @@ function handleClickComment(){
       transition={{ duration:3, repeat:Infinity }}
       className="relative rounded-full"
     >
-      {userImg && <img
-        className="w-16 h-16 rounded-full object-cover border-2 border-cyan-400"
-        src={userImg}
-        alt={name}
-      />}
+ {userImg && (
+  <Link
+    to={`/user/${contentAuthorId}`}
+    state={{ userHint: { name, photo: userImg } }}
+  >
+    <img
+      className="w-16 h-16 rounded-full object-cover border-2 border-cyan-400 cursor-pointer"
+      src={userImg}
+      alt={name}
+    />
+  </Link>
+)}
       <div className="online-orbit"></div>
     </motion.div>
 
@@ -781,14 +793,16 @@ function handleClickComment(){
           className="like-user-card"
         >
 
-          <img
-            src={
-              likeUser.photo ||
-              "https://png.pngtree.com/png-vector/20220818/ourmid/pngtree-cartoon-dead-fish-png-image_6113748.png"
-            }
-            className="like-avatar"
-            alt=""
-          />
+          <Link
+  to={`/user/${likeUser._id}`}
+  state={{ userHint: { name: likeUser.name, photo: likeUser.photo } }}
+>
+  <img
+    src={likeUser.photo || "https://png.pngtree.com/png-vector/20220818/ourmid/pngtree-cartoon-dead-fish-png-image_6113748.png"}
+    className="like-avatar cursor-pointer"
+    alt=""
+  />
+</Link>
 
           <div className="flex-1">
 
@@ -824,38 +838,79 @@ function handleClickComment(){
   </ModalBody>
 </Modal>
 
-<Modal show={showCommentersModal} onClose={()=>setShowCommentersModal(false)} size='sm'>
-  <ModalHeader>Commented by</ModalHeader>
-  <ModalBody>
-    {isLoadingCommenters && <p className='text-sm text-center'>loading...</p>}
+<Modal
+  show={showCommentersModal}
+  onClose={() => setShowCommentersModal(false)}
+  size="sm"
+  className="likes-modal"
+>
+  <ModalHeader className="likes-header">
+    💬 People who commented
+  </ModalHeader>
 
-    {!isLoadingCommenters && commentersData?.length === 0 &&
-      <p className='text-sm text-center'>no comments yet</p>
-    }
+  <ModalBody className="likes-body">
 
-    <div className='space-y-3'>
-      {commentersData?.map((commenter)=>(
-        <div key={commenter._id} className='flex items-center gap-3'>
-          <img 
-            src={commenter.photo || 'https://png.pngtree.com/png-vector/20220818/ourmid/pngtree-cartoon-dead-fish-png-image_6113748.png'} 
-            className='size-[35px] rounded-full object-cover'
-            alt=""
-          />
-          <span className='text-sm font-medium'>{commenter.name}</span>
-        </div>
+    {isLoadingCommenters && (
+      <p className="likes-loading">
+        Loading explorers...
+      </p>
+    )}
+
+    {!isLoadingCommenters && commentersData?.length === 0 && (
+      <div className="likes-empty">
+        <div className="empty-planet">🪐</div>
+        <h3>No comments yet</h3>
+        <p>Be the first astronaut to comment.</p>
+      </div>
+    )}
+
+    <div className="likes-list">
+
+      {commentersData?.map((commenter) => (
+
+        <motion.div
+          key={commenter._id}
+          whileHover={{ scale: 1.03 }}
+          className="like-user-card"
+        >
+
+        <Link
+  to={`/user/${commenter._id}`}
+  state={{ userHint: { name: commenter.name, photo: commenter.photo } }}
+>
+  <img 
+    src={commenter.photo || 'https://png.pngtree.com/png-vector/20220818/ourmid/pngtree-cartoon-dead-fish-png-image_6113748.png'} 
+    className='size-[35px] rounded-full object-cover cursor-pointer'
+    alt=""
+  />
+</Link>
+
+          <div className="flex-1">
+            <h4>{commenter.name}</h4>
+            <span>🚀 Space Explorer</span>
+          </div>
+
+          <div className="like-heart">
+            💬
+          </div>
+
+        </motion.div>
+
       ))}
+
     </div>
 
-    <div className='mt-4 flex justify-end'>
+    <div className="mt-5 flex justify-end">
       <motion.button
-        whileHover={{scale:1.05}}
-        whileTap={{scale:.95}}
-        onClick={()=>setShowCommentersModal(false)}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: .95 }}
+        onClick={() => setShowCommentersModal(false)}
         className="space-modal-btn"
       >
         Close
       </motion.button>
     </div>
+
   </ModalBody>
 </Modal>
 

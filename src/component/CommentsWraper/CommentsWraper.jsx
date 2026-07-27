@@ -23,7 +23,6 @@ function handleUpdateComment(comment){
 const [commentToBeUpdate, setUpdateComment] = useState()
 const [activeReplyCommentId, setActiveReplyCommentId] = useState(null)
 
-// ✅ التاب النشط: show أو add
 const [activeTab, setActiveTab] = useState('show')
 
 async function getPostComments() {
@@ -58,7 +57,6 @@ const commentsCount = data?.data?.comments?.length ?? 0
           className="space-comments-header"
         />
 
-        {/* ✅ التابات */}
         <div className="comments-tabs">
           <button
             className={`comments-tab-btn ${activeTab==='show' ? 'active' : ''}`}
@@ -74,7 +72,6 @@ const commentsCount = data?.data?.comments?.length ?? 0
           </button>
         </div>
 
-        {/* ✅ محتوى التاب: مساحته كاملة لوحده، مفيش تراكب خالص */}
         <div className="comments-tab-content">
 
           {activeTab === 'show' &&
@@ -95,11 +92,12 @@ const commentsCount = data?.data?.comments?.length ?? 0
                 data.data.comments.map((comment)=>(
                   <Comment
                     key={comment._id ?? comment.id}
-  setUpdateComment={handleUpdateComment}   
+                    setUpdateComment={handleUpdateComment}   
                     comment={comment}
                     activePostId={activePostId}
                     activeReplyCommentId={activeReplyCommentId}
                     setActiveReplyCommentId={setActiveReplyCommentId}
+                    closeCommentsDrawer={handleClose}
                   />
                 ))
               }

@@ -7,14 +7,11 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast'
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 import "./Comment.css";
 
 const defultImg = 'https://png.pngtree.com/png-vector/20220818/ourmid/pngtree-cartoon-dead-fish-png-image_6113748.png'
 
-/* ============================================================
-   صف روابط نصي بستايل فيسبوك (Like · Reply · 3 Replies)
-   خفيف جداً وبياخد مساحة صغيرة، وبيتلف (wrap) لوحده على الموبايل
-   ============================================================ */
 function ActionLink({ children, onClick, active, danger, disabled }) {
   return (
     <button
@@ -36,13 +33,16 @@ function Dot() {
   return <span className="text-violet-500/40 text-xs select-none">•</span>
 }
 
-function Reply({ reply, activePostId, commentId }) {
+function Reply({ reply, activePostId, commentId, closeCommentsDrawer }) {
   const { userData } = useContext(AuthContext)
   const queryClient = useQueryClient()
   const [isEditing, setIsEditing] = useState(false)
   const [editContent, setEditContent] = useState(reply.content)
 
   const isOwner = userData?._id === reply.commentCreator?._id
+  const replyCreatorId = reply.commentCreator?._id
+  const replyCreatorName = reply.commentCreator?.name
+  const replyCreatorPhoto = reply.commentCreator?.photo
 
   const { mutate: deleteReplyMutate, isPending: isDeletingReply } = useMutation({
     mutationFn: deleteReply,
@@ -99,19 +99,32 @@ function Reply({ reply, activePostId, commentId }) {
     >
       <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,#8b5cf6,transparent_65%)] pointer-events-none"></div>
 
-      <img
-        src={reply.commentCreator?.photo || defultImg}
-        className="relative z-10 shrink-0 size-[32px] sm:size-[42px] rounded-full object-cover border-2 border-violet-500 shadow-[0_0_14px_#8b5cf6]"
-        alt=""
-      />
+      <Link
+        to={`/user/${replyCreatorId}`}
+        state={{ userHint: { name: replyCreatorName, photo: replyCreatorPhoto } }}
+        onClick={closeCommentsDrawer}
+        className="relative z-20 shrink-0"
+      >
+        <img
+          src={replyCreatorPhoto || defultImg}
+          className="size-[32px] sm:size-[42px] rounded-full object-cover border-2 border-violet-500 shadow-[0_0_14px_#8b5cf6] cursor-pointer"
+          alt=""
+        />
+      </Link>
 
-      {/* min-w-0 عشان النص الطويل يعمل wrap صح بدل ما يكسر التصميم على الموبايل */}
       <div className="flex-1 min-w-0 relative z-10">
 
         <div className="flex items-center gap-2 flex-wrap">
-          <h3 className="font-semibold text-violet-100 text-sm sm:text-base truncate max-w-[55vw] sm:max-w-none">
-            {reply.commentCreator?.name}
-          </h3>
+          <Link
+            to={`/user/${replyCreatorId}`}
+            state={{ userHint: { name: replyCreatorName, photo: replyCreatorPhoto } }}
+            onClick={closeCommentsDrawer}
+            className="relative z-20"
+          >
+            <h3 className="font-semibold text-violet-100 text-sm sm:text-base truncate max-w-[55vw] sm:max-w-none hover:underline cursor-pointer">
+              {replyCreatorName}
+            </h3>
+          </Link>
           <span className="text-[9px] sm:text-[10px] bg-violet-600/30 text-violet-200 px-2 rounded-full shrink-0">
             Crew
           </span>
@@ -168,7 +181,7 @@ function Reply({ reply, activePostId, commentId }) {
   )
 }
 
-export default function Comment({ comment, setUpdateComment, activePostId, activeReplyCommentId, setActiveReplyCommentId }) {
+export default function Comment({ comment, setUpdateComment, activePostId, activeReplyCommentId, setActiveReplyCommentId, closeCommentsDrawer }) {
 
   if (!comment || !comment.commentCreator) return null;
 
@@ -181,7 +194,6 @@ export default function Comment({ comment, setUpdateComment, activePostId, activ
   const isCommentLiked = likes?.includes(userData?._id)
   const commentLikesCount = likes?.length ?? 0
 
-  // الريبلاي بتاع الكومنت ده مفتوح؟ (state مشتركة، كومنت واحد بس في المرة)
   const isReplying = activeReplyCommentId === id
 
   const [showReplies, setShowReplies] = useState(false)
@@ -294,36 +306,48 @@ export default function Comment({ comment, setUpdateComment, activePostId, activ
         hover:shadow-[0_0_60px_rgba(139,92,246,.4)]
       "
     >
-      {/* زخارف الفضاء - خفيفة عشان متاكلش مساحة على الموبايل */}
-      <div className="comment-nebula"></div>
-      <div className="comment-star star1"></div>
-      <div className="comment-star star2"></div>
-      <div className="comment-star star3"></div>
+      <div className="comment-nebula pointer-events-none"></div>
+      <div className="comment-star star1 pointer-events-none"></div>
+      <div className="comment-star star2 pointer-events-none"></div>
+      <div className="comment-star star3 pointer-events-none"></div>
 
       <div className="relative z-10 flex gap-2.5 sm:gap-4 min-w-0">
 
-        <img
-          src={photo || defultImg}
-          alt=""
-          className="
-            shrink-0
-            w-10 h-10 sm:w-14 sm:h-14
-            rounded-full object-cover
-            border-2 border-violet-500
-            shadow-[0_0_18px_#8b5cf6]
-            transition duration-500
-            group-hover:rotate-6
-          "
-        />
+        <Link
+          to={`/user/${creatorId}`}
+          state={{ userHint: { name, photo } }}
+          onClick={closeCommentsDrawer}
+          className="relative z-20 shrink-0"
+        >
+          <img
+            src={photo || defultImg}
+            alt=""
+            className="
+              w-10 h-10 sm:w-14 sm:h-14
+              rounded-full object-cover
+              border-2 border-violet-500
+              shadow-[0_0_18px_#8b5cf6]
+              transition duration-500
+              group-hover:rotate-6
+              cursor-pointer
+            "
+          />
+        </Link>
 
-        {/* min-w-0 هو مفتاح إصلاح الريسبونسيف: بيمنع الفلكس من التمدد بره الكارد */}
         <div className="flex-1 min-w-0">
 
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <h3 className="text-sm sm:text-lg font-bold text-violet-100 tracking-wide truncate">
-                {name}
-              </h3>
+              <Link
+                to={`/user/${creatorId}`}
+                state={{ userHint: { name, photo } }}
+                onClick={closeCommentsDrawer}
+                className="relative z-20"
+              >
+                <h3 className="text-sm sm:text-lg font-bold text-violet-100 tracking-wide truncate hover:underline cursor-pointer">
+                  {name}
+                </h3>
+              </Link>
               <p className="text-[11px] sm:text-xs text-violet-300 mt-0.5">
                 🪐 {createdAt ? createdAt.split('T')[0] : ''}
               </p>
@@ -338,7 +362,6 @@ export default function Comment({ comment, setUpdateComment, activePostId, activ
             {content}
           </p>
 
-          {/* صف الأكشنز بستايل فيسبوك: نص خفيف مش أزرار كبيرة، wrap تلقائي على الشاشات الصغيرة */}
           <div className="flex items-center gap-2 sm:gap-2.5 mt-3 flex-wrap">
 
             <button
@@ -381,7 +404,6 @@ export default function Comment({ comment, setUpdateComment, activePostId, activ
             )}
           </div>
 
-          {/* صندوق الرد */}
           {isReplying && (
             <form onSubmit={handleSubmit(addReplyMutate)} className="mt-3 w-full min-w-0">
               <div className="rounded-xl border border-violet-500/30 bg-[#140b30]/70 p-2.5 sm:p-3 w-full">
@@ -419,7 +441,6 @@ export default function Comment({ comment, setUpdateComment, activePostId, activ
             </form>
           )}
 
-          {/* الريبلايز - عمود عرضه مضبوط عشان مايطلعش بره الكارد على الموبايل */}
           {showReplies && (
             <div className="mt-2 w-full min-w-0 pl-2 sm:pl-4 border-l-2 border-violet-500/20">
 
@@ -440,6 +461,7 @@ export default function Comment({ comment, setUpdateComment, activePostId, activ
                   reply={reply}
                   activePostId={activePostId}
                   commentId={id}
+                  closeCommentsDrawer={closeCommentsDrawer}
                 />
               )}
             </div>
