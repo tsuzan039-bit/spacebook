@@ -22,8 +22,12 @@ catch(err){
 }
 
 useEffect(() => {
-  getLoggedInUserData()
-}, [])
+  if (token) {
+    getLoggedInUserData()
+  } else {
+    setuserData(null)
+  }
+}, [token])
 
   return <AuthContext.Provider value={{token,setToken,userData,setuserData,getLoggedInUserData}}>
 
