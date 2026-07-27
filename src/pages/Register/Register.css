@@ -118,7 +118,9 @@ box-shadow:
     0 0 40px #8b5cf6;
 }
 .respace{
-    font-size:70px;
+    font-size: clamp(32px, 10vw, 70px);
+    line-height: 1.3;
+    padding-bottom: 6px;
     font-weight:800;
 
   background: linear-gradient(
